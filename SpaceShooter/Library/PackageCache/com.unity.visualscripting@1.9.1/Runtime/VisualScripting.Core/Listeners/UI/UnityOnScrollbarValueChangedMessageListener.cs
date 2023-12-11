@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e2486337d0488947962773e92812655f026091782aa907f37414199b8e3574ad
-size 413
+using UnityEngine.UI;
+
+namespace Unity.VisualScripting
+{
+    [UnityEngine.AddComponentMenu("")]
+    public sealed class UnityOnScrollbarValueChangedMessageListener : MessageListener
+    {
+        private void Start()
+        {
+            GetComponent<Scrollbar>()?.onValueChanged?.AddListener((value) =>
+                EventBus.Trigger(EventHooks.OnScrollbarValueChanged, gameObject, value));
+        }
+    }
+}
