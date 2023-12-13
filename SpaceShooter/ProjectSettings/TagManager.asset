@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6c41767fc385415a900bc90e18752c859f2178798a34bb6f868f253f1b6c7383
-size 392
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - BULLET
+  - PLAYER
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - BARREL
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - AI
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
