@@ -18,8 +18,6 @@ public class FireCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.LogError("AAA");
-
         audio = GetComponent<AudioSource>();
 
         muzzleFlash = firePos.GetComponentInChildren<MeshRenderer>();
