@@ -15,6 +15,8 @@ public class FireCtrl : MonoBehaviour
 
     private MeshRenderer muzzleFlash;
 
+    private RaycastHit hit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +30,22 @@ public class FireCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(firePos.position, firePos.forward * 10.0f, Color.green);
+
         if(Input.GetMouseButtonDown(0))
         {
             Fire();
+
+            if(Physics.Raycast(firePos.position, 
+                               firePos.forward, 
+                               out hit, 
+                               10.0f, 
+                               1 << 6))
+            {
+                Debug.Log($"Hit={hit.transform.name}");
+
+                hit.transform.GetComponent<MonsterCtrl>()?.OnDamage(hit.point, hit.normal);
+            }
         }
     }
 
