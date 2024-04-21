@@ -37,7 +37,7 @@ public class Movement : MonoBehaviourPunCallbacks, IPunObservable
         pv = GetComponent<PhotonView>();
         virtualCamera = GameObject.FindObjectOfType<CinemachineVirtualCamera>();
 
-        if(pv.IsMine)
+        if(pv.IsMine && virtualCamera != null)
         {
             virtualCamera.Follow = transform;
             virtualCamera.LookAt = transform;
