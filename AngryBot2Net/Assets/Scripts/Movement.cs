@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using Cinemachine;
 
-public class Movement : MonoBehaviour
+public class Movement : MonoBehaviourPunCallbacks, IPunObservable
 {
     private CharacterController controller;
     private new Transform transform;
@@ -20,6 +20,11 @@ public class Movement : MonoBehaviour
     private CinemachineVirtualCamera virtualCamera;
 
     public float moveSpeed = 10.0f;
+
+    private Vector3 receivePos;
+    private Quaternion receiveRot;
+
+    public float damping = 10.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +54,13 @@ public class Movement : MonoBehaviour
             Move();
             Turn();
         }
+        //정상작동안함
+        //else
+        //{
+        //    transform.position = Vector3.Lerp(transform.position, receivePos, Time.deltaTime * damping);
+        //
+        //    transform.rotation = Quaternion.Slerp(transform.rotation, receiveRot, Time.deltaTime * damping);
+        //}
     }
 
     float h =>Input.GetAxis("Horizontal");
@@ -85,5 +97,20 @@ public class Movement : MonoBehaviour
         Vector3 lookDir = hitPoint - transform.position;
         lookDir.y = 0;
         transform.localRotation = Quaternion.LookRotation(lookDir);
+    }
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        //정상작동안함 파싱 오류 발생 
+        //if(stream.IsWriting)
+        //{
+        //    stream.SendNext(transform.position);
+        //    stream.SendNext(transform.rotation);
+        //}
+        //else
+        //{
+        //    receivePos = (Vector3)stream.ReceiveNext();
+        //    receiveRot = (Quaternion)stream.ReceiveNext();
+        //}
     }
 }
